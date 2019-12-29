@@ -11,15 +11,6 @@ uniform vec3 uTint2; //Color name Secondary default 0.041, 0.04, 0.04
 uniform vec3 uTint3; //Color name Tertiary default 0.64, 0.16, 0.01
 uniform vec3 uTint4; //Color name Accents default 0.13, 0.14, 0.24
 
-//USE_TEXTURE2D(tMetallicMap); //name "Metallic Map"
-//uniform float fMetallic; //name "Metallic Value" Min 0 Max 1
-
-//USE_TEXTURE2D(tRoughnessMap); //name "Roughness Map"
-//uniform float fRoughness; //name "Roughness Value" Min 0 Max 1
-
-//USE_TEXTURE2D(tEmissiveMap); //name "Emissive Map"
-//uniform vec3 uEmissive; //Color name "Emissive Color" default 0.0, 0.64, 1.0
-
 void CustomAlbedo(inout FragmentState s)
 {
     vec4 tintMask = texture2D(tTintMaskMap, s.vertexTexCoord ).rgba;
@@ -46,31 +37,3 @@ void CustomAlbedo(inout FragmentState s)
     #undef Albedo
 #endif
 #define Albedo CustomAlbedo
-
-// void TennogenMetallic(inout FragmentState s)
-// {
-//     float m = texture2D(tMetallicMap, s.vertexTexCoord).r;
-
-//     s.reflectivity = m;
-// }
-
-// #ifdef Reflectivity
-//     #undef Reflectivity
-// #endif
-// #define Reflectivity TennogenMetallic
-
-// void TennogenNormal(inout FragmentState s)
-// {
-//     vec3 normal = texture2D(tNormal, s.vertexTexCoord).rgb;
-
-//     normal = normalize(normal * 2.0 - 1.0);
-
-//     normal.y *= -1;
-
-//     s.normal = normal;
-// }
-
-// #ifdef Surface
-//     #undef Surface
-// #endif
-// #define Surface TennogenNormal
