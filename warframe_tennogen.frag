@@ -22,10 +22,10 @@ void CustomAlbedo(inout FragmentState s)
     vec4 tintColor3 = vec4(uTint3.r,uTint3.g,uTint3.b,1);
     vec4 tintColor4 = vec4(uTint4.r,uTint4.g,uTint4.b,1);
 
-    vec4 resultTint = mix(vec4(0.5,0.5,0.5,1), tintColor4, tintMask.r);
+    vec4 resultTint = mix(vec4(0.5,0.5,0.5,1), tintColor1, tintMask.r);
     resultTint = mix(resultTint, tintColor2, tintMask.g);
     resultTint = mix(resultTint, tintColor3, tintMask.b);
-    resultTint = mix(resultTint, tintColor1, tintMask.a);
+    resultTint = mix(resultTint, tintColor4, tintMask.a);
     resultTint *= 2.0;
     diffuseMap *= resultTint;
 
